@@ -3,4 +3,5 @@ MediSync: AI-powered healthcare platform integrating symptom analysis, disease p
 
 - [Backend repo- MediSync_services](https://github.com/ChamaliVishmani/MediSync_services)
 - [Frontend repo - MediSync-React-Frontend](https://github.com/Nilupa-Illangarathna/MediSync-React-Frontend)
-- [ML repo - medisync_ml_backend](https://github.com/AsgardiansCode/medisync_ml_backend) 
+- [ML repo - medisync_ml_backend](https://github.com/AsgardiansCode/medisync_ml_backend)
+- [Eureka Server repo](https://github.com/AsgardiansCode/springboot-eureka-server)
