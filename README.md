@@ -7,6 +7,7 @@ MediSync is an AI-powered healthcare platform that integrates symptom analysis, 
 - [Introduction](#introduction)
 - [Architecture](#architecture)
 - [Microservices](#microservices)
+- [Core Services](#core-services)
 - [User Interface](#user-interface)
 - [Deployment](#deployment)
 - [Source Code](#source-code)
@@ -17,94 +18,126 @@ MediSync is an AI-powered healthcare platform that integrates symptom analysis, 
 
 ## Introduction
 
-MediSync is a comprehensive healthcare assistance platform that seamlessly integrates AI-powered symptom analysis, disease prediction, doctor recommendations, patient management, and educational resources. Built on a microservices architecture, it offers a centralized solution for both individuals seeking medical guidance and healthcare professionals overseeing patient care.
+MediSync aims to address the challenges faced by patients in getting timely and accurate medical help, especially in remote areas. The core features include:
 
-### Core Features
-- **Symptom Analysis and Disease Prediction**
-- **Doctor Recommendations**
-- **Patient Management**
-- **Drug Interaction Checker**
-- **Educational Resources**
-- **Emergency Services Directory**
+- Symptom Analysis and Disease Prediction
+- Doctor Recommendations
+- Patient Management
+- Drug Interaction Checker
+- Educational Resources
+
+The overall goal of MediSync is to make healthcare more accessible, efficient, and personalized.
 
 ## Architecture
 
 ### Architectural Diagram
-![Architectural Diagram](TODO: Add architectural diagram here)
+![Architecture Diagram](path/to/architecture_diagram.png) <!-- TODO: Add an architectural diagram -->
 
 ### Design Decisions
-The architectural design of MediSync involves splitting the application into different services to enhance flexibility, scalability, and maintainability. Key decisions include:
-- **Microservices Architecture:** Ensures that each service can be developed, deployed, and scaled independently.
-- **Netflix Software Stack:** Utilized for service discovery, load balancing, and fault tolerance.
+
+- **Microservices Architecture:** The application is divided into various services to ensure resilience and scalability. Each service handles a specific functionality, making the system modular and easier to maintain.
+- **Netflix Software Stack:** Utilized for service discovery, load balancing, and circuit breaking, ensuring robustness and fault tolerance.
 
 ## Microservices
 
 ### Implementation Methods
-The implementation leverages the Netflix OSS stack, including Eureka for service discovery, Ribbon for load balancing, and Hystrix for fault tolerance.
+
+- **Netflix Software Stack:** Includes Eureka for service discovery, Ribbon for load balancing, and Hystrix for circuit breaking.
 
 ### Core Services
 
-#### 1. Drug Interaction Checker Service
+1. **Drug Interaction Checker Service**
+   - **Functionality:** Checks for interactions between specified drugs.
+   - **API Endpoints:**
+     - `/ddi_checker_test (GET)`
+     - `/ddi_checker (POST)`
+     - `/drugs_list (GET)`
+     - `/health (GET)`
+     - `/status (GET)`
 
-- **Functionality:** Checks for interactions between specified drugs.
-- **REST API Endpoints:**
-  - **/ddi_checker_test (GET):** Health check for the service.
-  - **/ddi_checker (POST):** Checks for drug interactions between two drugs.
-  - **/drugs_list (GET):** Returns a list of available drugs.
-  - **/health (GET):** Returns the health status of the service.
-  - **/status (GET):** Provides the current status of the service.
-- **Inter-service Interactions:** Consumes services from the API Gateway for centralized routing.
+2. **Disease Prediction Service**
+   - **Functionality:** Predicts diseases based on symptoms and recommends doctors.
+   - **API Endpoints:**
+     - `/predictDiseaseFromSymptoms (POST)`
+     - `/recommendDoctor/disease (POST)`
+     - `/recommendDoctor/symptoms (POST)`
+     - `/health (GET)`
+     - `/status (GET)`
 
-#### 2. Disease Prediction Service
+3. **Appointment Scheduling Service**
+   - **Functionality:** Manages doctor appointments and scheduling.
+   - **API Endpoints:**
+     - `/add-patient (POST)`
+     - `/add-doctor (POST)`
+     - `/add-hospital (POST)`
+     - `/add-available-appointment (POST)`
+     - `/get-available-appointments (POST)`
+     - `/book-appointment (POST)`
 
-- **Functionality:** Predicts diseases based on symptoms and recommends doctors.
-- **REST API Endpoints:**
-  - **/predictDiseaseFromSymptoms (POST):** Predicts disease based on symptoms.
-  - **/recommendDoctor/disease (POST):** Recommends a doctor based on disease.
-  - **/recommendDoctor/symptoms (POST):** Recommends a doctor based on symptoms.
-  - **/health (GET):** Returns the health status of the service.
-  - **/status (GET):** Provides the current status of the service.
-- **Inter-service Interactions:** Communicates with the Symptom Analysis Service to refine symptom data.
+### Discovery Server
 
-#### 3. Appointment Scheduling Service
+Services register with the Eureka Discovery Server, which monitors their availability and health status. This ensures that all services can be dynamically discovered and accessed by other services.
 
-- **Functionality:** Manages doctor appointments and scheduling.
-- **REST API Endpoints:**
-  - **/add-patient (POST):** Adds a new patient.
-  - **/add-doctor (POST):** Adds a new doctor.
-  - **/add-hospital (POST):** Adds a new hospital.
-  - **/add-available-appointment (POST):** Adds a new available appointment.
-  - **/get-available-appointments (POST):** Retrieves available appointments.
-  - **/book-appointment (POST):** Books an appointment for a patient.
-- **Inter-service Interactions:** Coordinates with the Doctor Recommendation Service for appointment scheduling.
+### API Gateway
 
-#### Discovery Server
-- **Role:** Services register with the discovery server, which monitors them and facilitates service discovery.
-- **Technology:** Eureka Server.
-
-#### API Gateway
-- **Role:** Acts as a central entry point for routing requests to various microservices.
-- **Configurations:** Utilizes Spring Cloud Gateway integrated with Eureka for dynamic service discovery and routing.
+Configured using Spring Cloud Gateway, the API Gateway acts as the central entry point for routing requests to various microservices. It integrates with Eureka for dynamic routing and load balancing.
 
 ## User Interface
 
 ### Implementation Details
-The user interface is implemented using React for the web application and Flutter for the mobile application. This provides a seamless and intuitive user experience across different devices.
+
+The user interface is built using React for the web application and Flutter for the mobile application. These frameworks provide a seamless and responsive experience for users.
 
 ### API Testing Tools
-Postman is used for testing the application's APIs to ensure they function correctly and handle various edge cases.
+
+Postman was used to test the APIs during development. It allowed for efficient testing and debugging of the endpoints.
 
 ## Deployment
 
 ### Deployment Methods
-To deploy the system for production use, follow these steps:
 
-#### Local Deployment
-1. **Clone the repositories:**
+- **Local Machines:** The system can be deployed on local machines using terminal commands or Docker containers.
+- **Cloud Deployment:** AWS is recommended for deploying the system in the cloud due to its scalability and reliability.
+
+### Steps for Deployment
+
+1. **Clone the Repositories:**
    ```bash
    git clone https://github.com/ChamaliVishmani/MediSync_services.git
    git clone https://github.com/Nilupa-Illangarathna/MediSync-React-Frontend.git
    git clone https://github.com/AsgardiansCode/medisync_ml_backend.git
    git clone https://github.com/AsgardiansCode/springboot-eureka-server.git
    git clone https://github.com/ChamaliVishmani/Medisync-api-gateway.git
- ```
+   ```
+
+## Source Code
+
+### GitHub Links
+
+- [Backend repo - MediSync_services](https://github.com/ChamaliVishmani/MediSync_services)
+- [Frontend repo - MediSync-React-Frontend](https://github.com/Nilupa-Illangarathna/MediSync-React-Frontend)
+- [ML repo - medisync_ml_backend](https://github.com/AsgardiansCode/medisync_ml_backend)
+- [Discovery Server](https://github.com/AsgardiansCode/springboot-eureka-server)
+- [API Gateway](https://github.com/ChamaliVishmani/Medisync-api-gateway)
+
+## Development Challenges
+
+### Difficulties Faced
+
+- **Data Privacy and Security:** Ensuring the privacy and security of sensitive health data.
+- **Interoperability:** Integrating with diverse healthcare IT systems.
+- **User Adoption:** Convincing both patients and doctors to adopt the new system.
+
+### Solutions
+
+- **Robust Security Frameworks:** Implemented advanced encryption and compliance with international standards.
+- **Flexible API Design:** Developed versatile APIs for seamless data integration.
+- **User-Centric Design:** Ensured the platform is intuitive and provided comprehensive training sessions.
+
+## Related Repositories
+
+- [Backend repo - MediSync_services](https://github.com/ChamaliVishmani/MediSync_services)
+- [Frontend repo - MediSync-React-Frontend](https://github.com/Nilupa-Illangarathna/MediSync-React-Frontend)
+- [ML repo - medisync_ml_backend](https://github.com/AsgardiansCode/medisync_ml_backend)
+- [Discovery Server](https://github.com/AsgardiansCode/springboot-eureka-server)
+- [API Gateway](https://github.com/ChamaliVishmani/Medisync-api-gateway)
