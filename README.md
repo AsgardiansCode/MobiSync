@@ -15,7 +15,14 @@ MediSync is an AI-powered healthcare platform that integrates symptom analysis, 
 [![Eureka](https://img.shields.io/badge/service%20discovery-Eureka-blue)](https://github.com/Netflix/eureka)
 [![Docker](https://img.shields.io/badge/container-Docker-blue)](https://www.docker.com/)
 
+### GitHub Repositories
 
+- [Backend repo - MediSync_services](https://github.com/ChamaliVishmani/MediSync_services)
+- [Frontend repo - MediSync-React-Frontend](https://github.com/Nilupa-Illangarathna/MediSync-React-Frontend)
+- [ML repo - medisync_ml_backend](https://github.com/AsgardiansCode/medisync_ml_backend)
+- [Discovery Server](https://github.com/AsgardiansCode/springboot-eureka-server)
+- [API Gateway](https://github.com/ChamaliVishmani/Medisync-api-gateway)
+  
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -305,21 +312,6 @@ MediSync can be deployed using the following methods:
 2. **Run Containers:** Use Docker Compose to run all the containers together.
 3. **Monitor Services:** Use Docker logs and Docker Compose commands to monitor the services.
 
-#### Cloud Deployment
-1. **Choose Cloud Provider:** Select a cloud provider like AWS, GCP, or Azure.
-2. **Deploy Containers:** Use Kubernetes or a similar orchestration tool to deploy the containers.
-3. **Configure Load Balancers:** Set up load balancers to distribute traffic.
-
-## Source Code
-
-### GitHub Repositories
-
-- [Backend repo - MediSync_services](https://github.com/ChamaliVishmani/MediSync_services)
-- [Frontend repo - MediSync-React-Frontend](https://github.com/Nilupa-Illangarathna/MediSync-React-Frontend)
-- [ML repo - medisync_ml_backend](https://github.com/AsgardiansCode/medisync_ml_backend)
-- [Discovery Server](https://github.com/AsgardiansCode/springboot-eureka-server)
-- [API Gateway](https://github.com/ChamaliVishmani/Medisync-api-gateway)
-
 ### Development Challenges
 
 During the development of MediSync, several challenges were encountered:
@@ -327,14 +319,3 @@ During the development of MediSync, several challenges were encountered:
 - **Data Privacy and Security:** Handling sensitive health data required implementing stringent security measures.
 - **Service Interactions:** Ensuring reliable inter-service communication and data consistency.
 - **Scalability:** Designing the system to handle a high number of concurrent users.
-- **Regulatory Compliance:** Adhering to healthcare regulations such as HIPAA and GDPR.
-
-These challenges were addressed through a combination of robust architectural decisions, thorough testing, and continuous learning and adaptation.
-
-## Related Repositories
-
-- [Backend repo - MediSync_services](https://github.com/ChamaliVishmani/MediSync_services)
-- [Frontend repo - MediSync-React-Frontend](https://github.com/Nilupa-Illangarathna/MediSync-React-Frontend)
-- [ML repo - medisync_ml_backend](https://github.com/AsgardiansCode/medisync_ml_backend)
-- [Discovery Server](https://github.com/AsgardiansCode/springboot-eureka-server)
-- [API Gateway](https://github.com/ChamaliVishmani/Medisync-api-gateway)
