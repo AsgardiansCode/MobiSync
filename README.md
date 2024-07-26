@@ -306,11 +306,5 @@ What sets MediSync apart is not only its advanced features but also its robust a
 - **Experience:** Software Engineering Intern at WSO2
 - **Contact:** [chamali.vishmani@gmail.com](mailto:chamali.vishmani@gmail.com), [LinkedIn](https://www.linkedin.com/in/chamali-vishmani/), [GitHub](https://github.com/ChamaliVishmani)
 
-## Contact Information
-
-For more information about MediSync, please contact:
-
-- **Project Team:** [medisync.team@example.com](mailto:medisync.team@example.com)
-- **Website:** [medisync.com](http://medisync.com)
 
 ---
